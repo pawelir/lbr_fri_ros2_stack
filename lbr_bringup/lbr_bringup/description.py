@@ -47,6 +47,18 @@ class LBRDescriptionMixin:
                 ),
             ]
         ),
+        controllers_config_path: Optional[
+            Union[LaunchConfiguration, str]
+        ] = PathJoinSubstitution(
+            [
+                FindPackageShare(
+                    LaunchConfiguration("ctrl_cfg_pkg", default="lbr_description")
+                ),
+                LaunchConfiguration(
+                    "ctrl_cfg", default="ros2_control/lbr_controllers.yaml"
+                ),
+            ]
+        ),
     ) -> Dict[str, str]:
         robot_description = {
             "robot_description": Command(
@@ -70,6 +82,8 @@ class LBRDescriptionMixin:
                     system_config_path,
                     " initial_joint_positions_path:=",
                     initial_joint_positions_path,
+                    " controllers_config_path:=",
+                    controllers_config_path,
                 ]
             )
         }
