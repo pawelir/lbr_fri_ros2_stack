@@ -69,7 +69,7 @@ class LBRMoveGroupMixin:
             )
             .planning_pipelines(
                 default_planning_pipeline="ompl",
-                pipelines=["ompl"],
+                pipelines=["ompl", "pilz_industrial_motion_planner"],
             )
         )
 

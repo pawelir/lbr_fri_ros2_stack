@@ -22,10 +22,31 @@
     will tipple https://github.com/lbr-stack/lbr_fri_ros2_stack/issues/230 -->
     <link name="world" />
 
+    <joint name="joint_name" type="fixed">
+        <origin xyz="0 0 0.3" />
+        <parent link="world" />
+        <child link="mounting_base" />
+    </joint>
+
+    <link name="mounting_base">
+        <visual>
+            <geometry>
+                <box size="0.5 0.5 0.6" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.5 0.5 0.6" />
+            </geometry>
+        </collision>
+
+    </link>
+
     <!--joint
         between <robot_name>_world_link and robot_name_link_0-->
     <joint name="$(arg robot_name)_world_joint" type="fixed">
-        <parent link="world" />
+        <origin xyz="0 0 0.3" />
+        <parent link="mounting_base" />
         <child link="$(arg robot_name)_link_0" />
     </joint>
 
